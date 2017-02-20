@@ -1,4 +1,5 @@
 
+import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.*;
 
 /**
@@ -31,7 +32,8 @@ public class test extends BasicGame{
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-
+        GL11.glClearColor(0.3f,0.7f,0.8f,1);
+        graphics.drawString("If you see this text, all Is good", 10,40);
 
     }
 }
