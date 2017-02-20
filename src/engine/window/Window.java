@@ -1,10 +1,7 @@
 package engine.window;
 
 import engine.map.Din;
-import org.newdawn.slick.BasicGame;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -14,7 +11,8 @@ import java.util.Random;
  */
 public class Window extends BasicGame{
     ArrayList<Integer> arr;
-
+    Camera camera;
+    Input input;
 
     public Window(String title) {
         super(title);
@@ -23,19 +21,23 @@ public class Window extends BasicGame{
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
         gameContainer.setTargetFrameRate(60);
+        camera = new Camera(0,0);
+        input = gameContainer.getInput();
 
-        arr = Din.getSmoothRandom(40,10,70,Din.PLAIN,Din.PLAIN);
+        arr = Din.getSmoothRandom(400,20,70,Din.MUTABLE,Din.MUTABLE);
     }
 
     @Override
     public void update(GameContainer gameContainer, int i) throws SlickException {
-
+        input = gameContainer.getInput();
     }
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
+        camera.translate(graphics, input);
         for(int i = 0; i < arr.size(); i++){
-            graphics.drawRect(i*(gameContainer.getWidth())/arr.size(), gameContainer.getHeight() - 32 * arr.get(i),(gameContainer.getWidth())/arr.size(), 32 * arr.get(i));
+            graphics.drawRect(i*32, gameContainer.getHeight() - 32 * arr.get(i),32, 32 * arr.get(i));
         }
+
     }
 }
