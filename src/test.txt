@@ -1,6 +1,0 @@
-/**
-
-If I can see this file, all is correct
-
-
-*/
