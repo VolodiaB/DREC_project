@@ -21,10 +21,16 @@ public class Window extends BasicGame{
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
         gameContainer.setTargetFrameRate(60);
+        gameContainer.setAlwaysRender(true);
+        gameContainer.setVSync(true);
+
+
+
+
         camera = new Camera(0,0);
         input = gameContainer.getInput();
 
-        arr = Din.getSmoothRandom(400,20,70,Din.MUTABLE,Din.MUTABLE);
+        arr = Din.getSmoothRandom(400,70,120,Din.PLAIN,Din.PLAIN);
     }
 
     @Override
