@@ -15,6 +15,8 @@ public class Start {
 
 
     private static AppGameContainer appgc;
+
+
     public static void main(String[] args) {
         try {
             appgc = new AppGameContainer(new Window(TITLE));
